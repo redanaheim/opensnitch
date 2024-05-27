@@ -273,11 +273,12 @@ func (o *Operator) hashCmp(v interface{}) bool {
 }
 
 func (o *Operator) listMatch(con interface{}, hasChecksums bool) bool {
-	res := true
 	for i := 0; i < len(o.List); i++ {
-		res = res && o.List[i].Match(con.(*conman.Connection), hasChecksums)
+		if o.List[i].Match(con.(*conman.Connection), hasChecksums) == false {
+			return false
+		}
 	}
-	return res
+	return true
 }
 
 // Match tries to match parts of a connection with the given operator.

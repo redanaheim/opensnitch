@@ -423,7 +423,7 @@ func onPacket(packet netfilter.Packet) {
 		return
 	}
 	// XXX: if a connection is not intercepted due to InterceptUnknown == false,
-	// it's not sent to the server, which leads to miss information.
+	// it's not sent to the server, which leads to misinformation.
 	stats.OnConnectionEvent(con, r, r == nil)
 }
 
